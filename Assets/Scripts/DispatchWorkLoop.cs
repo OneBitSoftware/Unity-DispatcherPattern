@@ -7,8 +7,7 @@ public class DispatchWorkLoop : UnityEngine.MonoBehaviour
     /// <summary>
     /// Controls single-item or all items execution within the frame loop
     /// </summary>
-    public bool SingleItemMode;
-
+    public bool SingleItemMode = true;
 
     private static DispatchWorkLoop _instance;
 
@@ -16,20 +15,27 @@ public class DispatchWorkLoop : UnityEngine.MonoBehaviour
     {
         get
         {
-            if (_instance == null)
-            {
-                _instance = new DispatchWorkLoop(); // Instantiate singleton on first use.
-                _instance.SingleItemMode = true;
-            }
-
             return _instance;
+        }
+    }
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+            _instance.SingleItemMode = true;
         }
     }
 
     // Update is called once per frame from the Unity engine
     void Update () {
 
-        if (Instance.SingleItemMode)
+        if (DispatchWorkLoop.Instance.SingleItemMode)
         {
             // Can InvokeOne to not hold the Frame loop when many operations are queued
             Dispatcher.Instance.InvokeOne();
