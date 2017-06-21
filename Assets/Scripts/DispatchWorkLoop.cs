@@ -7,7 +7,7 @@ public class DispatchWorkLoop : UnityEngine.MonoBehaviour
     /// <summary>
     /// Controls single-item or all items execution within the frame loop
     /// </summary>
-    public bool SingleItemMode = true;
+    public bool SingleItemMode = false;
 
     private static DispatchWorkLoop _instance;
 

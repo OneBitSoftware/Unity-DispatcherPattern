@@ -33,4 +33,14 @@ public class PerformWork : MonoBehaviour {
             () => LongOperation("9000ms")
         );
     }
+
+    public void Perform1000Tasks()
+    {
+        for (int i = 0; i < 1000000; i++)
+        {
+            Dispatcher.Instance.Enqueue(
+                () => { }
+            );
+        }
+    }
 }
