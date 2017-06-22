@@ -28,7 +28,7 @@ public class DispatchWorkLoop : UnityEngine.MonoBehaviour
         else
         {
             _instance = this;
-            _instance.SingleItemMode = true;
+            //_instance.SingleItemMode = true;
         }
     }
 
