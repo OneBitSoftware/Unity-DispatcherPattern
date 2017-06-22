@@ -50,6 +50,6 @@ public class PerformWork : MonoBehaviour {
             );
         }
 
-        sw.Stop();
+       // sw.Stop();
     }
 }
